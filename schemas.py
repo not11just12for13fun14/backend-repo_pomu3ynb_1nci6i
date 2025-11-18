@@ -38,6 +38,21 @@ class Product(BaseModel):
     category: str = Field(..., description="Product category")
     in_stock: bool = Field(True, description="Whether product is in stock")
 
+class Furniture(BaseModel):
+    """
+    Furniture collection schema
+    Collection name: "furniture"
+    """
+    name: str = Field(..., description="Furniture name")
+    description: Optional[str] = Field(None, description="Details about the furniture")
+    category: str = Field(..., description="e.g., Chair, Table, Sofa, Bed")
+    material: Optional[str] = Field(None, description="Primary material, e.g., Wood, Metal")
+    dimensions: Optional[str] = Field(None, description="L x W x H or general sizing notes")
+    price: float = Field(..., ge=0, description="Price in dollars")
+    stock: int = Field(0, ge=0, description="Units in stock")
+    image_url: Optional[str] = Field(None, description="Image URL for display")
+    is_featured: bool = Field(False, description="Highlight this item in listings")
+
 # Add your own schemas here:
 # --------------------------------------------------
 
